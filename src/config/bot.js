@@ -649,3 +649,16 @@ export function getRandomColor() {
 }
 
 export default botConfig;
+@bot.event
+async def on_ready():
+    print(f"✅ Bot connecté: {bot.user}")
+    
+    # ⬇️ ZID HAD LINE
+    await bot.load_extension("fixlag")   # ila file f cogs/ dir "cogs.fixlag"
+    
+    # Sync slash commands
+    try:
+        synced = await bot.tree.sync()
+        print(f"✅ Synced {len(synced)} slash commands")
+    except Exception as e:
+        print(f"❌ Sync error: {e}")
