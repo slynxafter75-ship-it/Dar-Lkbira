@@ -393,6 +393,11 @@ async function handleStatus(interaction) {
         if (applications.length > recentApplications.length) {
             embed.setFooter({ text: `Showing latest ${recentApplications.length} of ${applications.length} applications.` });
         }
+        @bot.command()
+@commands.has_permissions(manage_channels=True)
+async def fixlag(ctx, channel: discord.VoiceChannel):
+    await channel.edit(rtc_region=None)
+    await ctx.send(f"✅ Region dyal {channel.mention} tbedlet l **Automatic**.")
 
         return InteractionHelper.safeEditReply(interaction, { embeds: [embed], flags: ["Ephemeral"] });
     }
